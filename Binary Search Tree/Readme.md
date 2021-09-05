@@ -1,0 +1,1 @@
+In here you can find the code about creating a Binary Search Tree, In Order Travesal, Pre Order Travesal, Post Order Travesal, Search Value, Finding max, Finding min, Calculating sum & deleting a node. 
