@@ -1,9 +1,11 @@
+# Creating the Binary node class
 class binaryNode:
     def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
 
+    # Adding new child to node
     def addChild(self, data):
         if data == self.data:
             return
@@ -19,45 +21,49 @@ class binaryNode:
             else:
                 self.right = binaryNode(data)
 
-    def inOrderTravesal(self):
+    # In-Order Traversal method / Left, Root, Right Traversal (Remember "In-Order" means root is in between Left and Right)
+    def inOrderTraversal(self):
         nodes = []
 
         if self.left:
-            nodes += self.left.inOrderTravesal()
+            nodes += self.left.inOrderTraversal()
 
         nodes.append(self.data)
 
         if self.right:
-            nodes += self.right.inOrderTravesal()
+            nodes += self.right.inOrderTraversal()
 
         return nodes
 
-    def preOrderTravesal(self):
+    # Pre-Order Traversal method / Root, Left, Right Traversal (Remember "Pre-Order" means root is in before the Left and Right)
+    def preOrderTraversal(self):
         nodes = []
 
         nodes.append(self.data)
 
         if self.left:
-            nodes += self.left.preOrderTravesal()
+            nodes += self.left.preOrderTraversal()
 
         if self.right:
-            nodes += self.right.preOrderTravesal()
+            nodes += self.right.preOrderTraversal()
 
         return nodes
 
-    def postOrderTravesal(self):
+    # Post-Order Traversal method / Left, Right, Root Traversal (Remember "Post-Order" means root is in after the Left and Right)
+    def postOrderTraversal(self):
         nodes = []
 
         if self.left:
-            nodes += self.left.postOrderTravesal()
+            nodes += self.left.postOrderTraversal()
 
         if self.right:
-            nodes += self.right.postOrderTravesal()
+            nodes += self.right.postOrderTraversal()
 
         nodes.append(self.data)
 
         return nodes
 
+    #Searching a value in the Tree
     def search(self, val):
         if self.data == val:
             return True
@@ -74,18 +80,21 @@ class binaryNode:
             else:
                 return False
 
+    # Finding the minimum value in the tree
     def min(self):
         if self.left:
             return self.left.min()
         else:
             return self.data
 
+    # Finding the Maximum value in the tree
     def max(self):
         if self.right:
             return self.right.max()
         else:
             return self.data
 
+    # Calculating the Sum of all nodes in the tree
     def sum(self):
         sum = 0
 
@@ -98,6 +107,7 @@ class binaryNode:
         sum += self.data
         return sum
 
+    # Deleting a node in the tree
     def delete(self,val):
         if val < self.data:
             if self.left:
@@ -119,7 +129,7 @@ class binaryNode:
 
         return self
 
-
+# Building the tree
 def buildTree(values):
     root = binaryNode(values[0])
 
@@ -133,9 +143,9 @@ if __name__ == "__main__":
     numbers = [17, 4, 1, 20, 9, 23, 18, 34, 18, 4]
     tree = buildTree(numbers)
 
-    print(tree.inOrderTravesal())
-    print(tree.preOrderTravesal())
-    print(tree.postOrderTravesal())
+    print(tree.inOrderTraversal())
+    print(tree.preOrderTraversal())
+    print(tree.postOrderTraversal())
 
     print(tree.search(17))
     print(tree.search(1000))
@@ -145,7 +155,7 @@ if __name__ == "__main__":
     print(tree.sum())
 
     tree.delete(20)
-    print(tree.inOrderTravesal())
+    print(tree.inOrderTraversal())
 
     tree.delete(9)
-    print(tree.inOrderTravesal())
+    print(tree.inOrderTraversal())
